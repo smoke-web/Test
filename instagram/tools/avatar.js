@@ -42,6 +42,13 @@ const variants = {
       <div style="font-size:120px;font-weight:800;color:${BLUE};margin:10px 0">за</div>
       <div style="font-size:170px;font-weight:900;letter-spacing:-6px">неделю</div>
     </div>`, '#ffd84d'),
+
+  // 4. Под ник sdelay.sayt: «сделай сайт» с курсором
+  'avatar-4-sdelay': page(`
+    <div style="color:#fff;line-height:.9;text-align:left">
+      <div style="font-size:190px;font-weight:900;letter-spacing:-6px">сделай</div>
+      <div style="font-size:190px;font-weight:900;letter-spacing:-6px;display:flex;align-items:center">сайт<span style="display:inline-block;width:26px;height:170px;background:#ffd84d;margin-left:18px;border-radius:4px"></span></div>
+    </div>`, BLUE),
 };
 
 (async () => {
@@ -54,12 +61,12 @@ const variants = {
 
   // Превью: как аватары выглядят в профиле (круг 300px) и в ленте/комментариях (круг 64px)
   const imgs = Object.keys(variants).map((n) => 'data:image/png;base64,' + fs.readFileSync(path.join(OUT, `${n}.png`)).toString('base64'));
-  await p.setViewportSize({ width: 1200, height: 560 });
+  await p.setViewportSize({ width: 1560, height: 560 });
   await p.setContent(`<!doctype html><html><head><meta charset="utf-8"><style>
     body{margin:0;background:#fff;font-family:Inter;display:flex;gap:60px;padding:50px;justify-content:center}
     .c{text-align:center} .big{width:300px;height:300px;border-radius:50%} .row{display:flex;align-items:center;gap:14px;margin-top:30px;justify-content:center}
     .sm{width:64px;height:64px;border-radius:50%} b{font-size:22px}
-  </style></head><body>${imgs.map((s, i) => `<div class="c"><img class="big" src="${s}"><div class="row"><img class="sm" src="${s}"><b>sait.za.nedelu</b></div><p style="color:#888;font-size:20px">Вариант ${i + 1}</p></div>`).join('')}</body></html>`);
+  </style></head><body>${imgs.map((s, i) => `<div class="c"><img class="big" src="${s}"><div class="row"><img class="sm" src="${s}"><b>sdelay.sayt</b></div><p style="color:#888;font-size:20px">Вариант ${i + 1}</p></div>`).join('')}</body></html>`);
   await p.screenshot({ path: path.join(OUT, 'preview.png') });
   await browser.close();
   console.log('done');

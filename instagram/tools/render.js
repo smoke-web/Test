@@ -44,7 +44,7 @@ li::before { content:"→"; position:absolute; left:0; color:${ACCENT}; font-wei
 `;
 
 const slide = (cls, inner, i, n) => `<!doctype html><html><head><meta charset="utf-8"><style>${base}</style></head>
-<body><div class="s ${cls}">${inner}<div class="foot"><span>Сайты, которые приносят заявки</span><span>${i}/${n}${i < n ? ' · листайте →' : ''}</span></div></div></body></html>`;
+<body><div class="s ${cls}">${inner}<div class="foot"><span>@sdelay.sayt</span><span>${i}/${n}${i < n ? ' · листайте →' : ''}</span></div></div></body></html>`;
 
 // ---------- содержимое постов ----------
 // Скриншоты для кейсов подставляются после рендера сайтов.
