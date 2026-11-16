@@ -140,10 +140,25 @@ def main() -> int:
         print("Не заданы TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID", file=sys.stderr)
         return 1
 
+    def save_state() -> None:
+        if not args.dry_run:
+            STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+            STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+    def error_alert_due() -> bool:
+        last = state.get("last_error_alert")
+        return not last or now - datetime.fromisoformat(last) > ERROR_ALERT_INTERVAL
+
     fixture = load_json(Path(args.fixture), None) if args.fixture else None
     if fixture is None and not (ig_user and ig_token):
-        notify("⚠️ Охотник за рилсами: не заданы IG_USER_ID / IG_ACCESS_TOKEN в секретах GitHub.")
-        return 1
+        # Напоминаем не чаще раза в 12 часов, иначе было бы сообщение каждые 30 минут.
+        if error_alert_due():
+            notify("⚠️ Охотник за рилсами: связь с Telegram работает ✅\n"
+                   "Но не заданы IG_USER_ID / IG_ACCESS_TOKEN в секретах GitHub — "
+                   "пока не могу смотреть Instagram.")
+            state["last_error_alert"] = now.isoformat()
+            save_state()
+        return 0
 
     all_hits, errors = [], []
     for username in cfg["accounts"]:
@@ -171,8 +186,7 @@ def main() -> int:
 
     # Сообщаем об ошибках не чаще раза в 12 часов, чтобы не спамить каждые 30 минут.
     if errors:
-        last = state.get("last_error_alert")
-        if not last or now - datetime.fromisoformat(last) > ERROR_ALERT_INTERVAL:
+        if error_alert_due():
             token_dead = any(getattr(e, "code", None) == 190 for _, e in errors)
             text = "⚠️ Охотник за рилсами: проблемы при проверке.\n"
             if token_dead:
@@ -181,10 +195,8 @@ def main() -> int:
             notify(text)
             state["last_error_alert"] = now.isoformat()
 
-    if not args.dry_run:
-        state["seen"] = seen_list[-5000:]
-        STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    state["seen"] = seen_list[-5000:]
+    save_state()
 
     # Ошибка по всем аккаунтам сразу — помечаем запуск как упавший, чтобы было видно в GitHub.
     return 1 if errors and len(errors) == len(cfg["accounts"]) else 0
