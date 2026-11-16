@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Имя] — создание сайтов</title>
+<meta name="description" content="Создание сайтов под ключ: лендинги, сайты-визитки, интернет-магазины. Бесплатный разбор вашего сайта.">
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #ffffff; --text: #1a1a1a; --muted: #6b6b6b;
+    --accent: #2f5bff; --accent-text: #ffffff; --border: #e6e3dc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212; --card: #1d1d1d; --text: #f2f2f2; --muted: #a0a0a0;
+      --accent: #6f8cff; --accent-text: #0b0b0b; --border: #2c2c2c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 480px; margin: 0 auto; padding: 40px 16px 56px; }
+  header { text-align: center; margin-bottom: 28px; }
+  .avatar {
+    width: 104px; height: 104px; border-radius: 50%; object-fit: cover;
+    background: var(--border); display: block; margin: 0 auto 14px;
+  }
+  h1 { font-size: 24px; margin: 0 0 6px; }
+  .lead { color: var(--muted); margin: 0; }
+  .btn {
+    display: block; text-align: center; text-decoration: none; font-weight: 600;
+    padding: 15px 18px; border-radius: 14px; margin: 10px 0;
+    background: var(--card); color: var(--text); border: 1px solid var(--border);
+  }
+  .btn.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+  h2 { font-size: 18px; margin: 34px 0 12px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 16px 18px; margin-bottom: 10px;
+  }
+  .row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .price { font-weight: 700; white-space: nowrap; }
+  .small { color: var(--muted); font-size: 14px; margin: 4px 0 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--card); color: var(--text); text-decoration: none; font-size: 14px; }
+  .grid img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; background: var(--border); }
+  .grid span { display: block; padding: 8px 10px; }
+  ol { padding-left: 20px; margin: 0; }
+  ol li { margin-bottom: 6px; }
+  blockquote { margin: 0; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 40px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <!-- Замените photo.jpg на своё фото и положите его в эту же папку -->
+    <img class="avatar" src="photo.jpg" alt="[Имя]">
+    <h1>[Имя] — сайты, которые приносят заявки</h1>
+    <p class="lead">Лендинги, сайты-визитки и интернет-магазины для малого бизнеса. Запуск от 7 дней.</p>
+  </header>
+
+  <!-- Замените 79990000000 на свой номер (только цифры) и username на свой Telegram -->
+  <a class="btn primary" href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0">🎁 Бесплатный разбор вашего сайта</a>
+  <a class="btn" href="https://wa.me/79990000000">💬 Написать в WhatsApp</a>
+  <a class="btn" href="https://t.me/username">✈️ Написать в Telegram</a>
+  <a class="btn" href="https://instagram.com/[ник]">📸 Instagram</a>
+
+  <h2>Цены</h2>
+  <div class="card">
+    <div class="row"><strong>Лендинг</strong><span class="price">от [цена] ₽</span></div>
+    <p class="small">1 страница · 7–10 дней · дизайн, адаптив, форма заявок, аналитика</p>
+  </div>
+  <div class="card">
+    <div class="row"><strong>Сайт-визитка</strong><span class="price">от [цена] ₽</span></div>
+    <p class="small">До 5 страниц · 10–14 дней · портфолио, услуги, отзывы, контакты</p>
+  </div>
+  <div class="card">
+    <div class="row"><strong>Интернет-магазин</strong><span class="price">от [цена] ₽</span></div>
+    <p class="small">От 3 недель · каталог, корзина, оплата онлайн</p>
+  </div>
+  <p class="small">Оплата 50% до старта и 50% после сдачи. Месяц поддержки бесплатно.</p>
+
+  <h2>Работы</h2>
+  <!-- Положите скриншоты work1.jpg… в эту папку и укажите ссылки на сайты -->
+  <div class="grid">
+    <a href="https://example.com"><img src="work1.jpg" alt="Сайт для [ниша]"><span>[Проект 1]</span></a>
+    <a href="https://example.com"><img src="work2.jpg" alt="Сайт для [ниша]"><span>[Проект 2]</span></a>
+    <a href="https://example.com"><img src="work3.jpg" alt="Сайт для [ниша]"><span>[Проект 3]</span></a>
+    <a href="https://example.com"><img src="work4.jpg" alt="Сайт для [ниша]"><span>[Проект 4]</span></a>
+  </div>
+
+  <h2>Как я работаю</h2>
+  <div class="card">
+    <ol>
+      <li>Созвон 15 минут: обсуждаем задачу</li>
+      <li>Договор и бриф, фиксированная цена и срок</li>
+      <li>Прототип → дизайн → разработка</li>
+      <li>Запуск, обучение, месяц поддержки</li>
+    </ol>
+  </div>
+
+  <h2>Отзывы</h2>
+  <div class="card"><blockquote>«[Текст отзыва клиента]»<p class="small">— [Имя клиента], [бизнес]</p></blockquote></div>
+  <div class="card"><blockquote>«[Текст отзыва клиента]»<p class="small">— [Имя клиента], [бизнес]</p></blockquote></div>
+
+  <a class="btn primary" href="https://wa.me/79990000000">Обсудить мой проект</a>
+
+  <footer>© [Имя], [год] · [город]</footer>
+</main>
+</body>
+</html>
