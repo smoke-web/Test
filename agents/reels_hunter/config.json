@@ -1,0 +1,15 @@
+{
+  "accounts": [
+    "ai.smetskaya",
+    "naneh.ghamar",
+    "asy_aaistudio"
+  ],
+  "media_per_account": 30,
+  "max_age_days": 14,
+  "outlier_multiplier": 3.0,
+  "min_likes": 200,
+  "min_reels_for_baseline": 5,
+  "fallback_likes_to_followers_ratio": 0.1,
+  "max_alerts_per_run": 10,
+  "graph_api_version": ""
+}

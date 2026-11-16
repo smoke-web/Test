@@ -1,0 +1,45 @@
+name: Reels Hunter
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # каждые 30 минут (GitHub может запускать с опозданием)
+  workflow_dispatch:          # кнопка «Run workflow» для ручного запуска
+
+permissions:
+  contents: write             # чтобы сохранять state/seen.json обратно в репозиторий
+
+concurrency:
+  group: reels-hunter
+  cancel-in-progress: false
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Найти залетевшие рилсы
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python agents/reels_hunter/tools/hunt.py
+
+      - name: Сохранить список уже отправленных рилсов
+        if: always()
+        run: |
+          git config user.name "reels-hunter-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add agents/reels_hunter/state/seen.json
+          if git diff --cached --quiet; then
+            echo "Изменений нет"
+          else
+            git commit -m "reels-hunter: обновить список отправленных рилсов"
+            git push
+          fi
