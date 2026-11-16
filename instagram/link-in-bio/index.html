@@ -46,7 +46,7 @@
   .small { color: var(--muted); font-size: 14px; margin: 4px 0 0; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .grid a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--card); color: var(--text); text-decoration: none; font-size: 14px; }
-  .grid img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; background: var(--border); }
+  .grid img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: top; display: block; background: var(--border); }
   .grid span { display: block; padding: 8px 10px; }
   ol { padding-left: 20px; margin: 0; }
   ol li { margin-bottom: 6px; }
@@ -58,7 +58,7 @@
 <main>
   <header>
     <!-- Замените photo.jpg на своё фото и положите его в эту же папку -->
-    <img class="avatar" src="photo.jpg" alt="[Имя]">
+    <img class="avatar" src="photo.jpg" alt="Фото" onerror="this.style.visibility='hidden'">
     <h1>[Имя] — сайты, которые приносят заявки</h1>
     <p class="lead">Лендинги, сайты-визитки и интернет-магазины для малого бизнеса. Запуск от 7 дней.</p>
   </header>
@@ -71,26 +71,25 @@
 
   <h2>Цены</h2>
   <div class="card">
-    <div class="row"><strong>Лендинг</strong><span class="price">от [цена] ₽</span></div>
+    <div class="row"><strong>Лендинг</strong><span class="price">от 20 000 ₽</span></div>
     <p class="small">1 страница · 7–10 дней · дизайн, адаптив, форма заявок, аналитика</p>
   </div>
   <div class="card">
-    <div class="row"><strong>Сайт-визитка</strong><span class="price">от [цена] ₽</span></div>
+    <div class="row"><strong>Сайт-визитка</strong><span class="price">от 35 000 ₽</span></div>
     <p class="small">До 5 страниц · 10–14 дней · портфолио, услуги, отзывы, контакты</p>
   </div>
   <div class="card">
-    <div class="row"><strong>Интернет-магазин</strong><span class="price">от [цена] ₽</span></div>
+    <div class="row"><strong>Интернет-магазин</strong><span class="price">от 80 000 ₽</span></div>
     <p class="small">От 3 недель · каталог, корзина, оплата онлайн</p>
   </div>
   <p class="small">Оплата 50% до старта и 50% после сдачи. Месяц поддержки бесплатно.</p>
 
   <h2>Работы</h2>
-  <!-- Положите скриншоты work1.jpg… в эту папку и укажите ссылки на сайты -->
+  <!-- Демо-проекты (концепты). Добавляйте сюда реальные работы по мере появления -->
   <div class="grid">
-    <a href="https://example.com"><img src="work1.jpg" alt="Сайт для [ниша]"><span>[Проект 1]</span></a>
-    <a href="https://example.com"><img src="work2.jpg" alt="Сайт для [ниша]"><span>[Проект 2]</span></a>
-    <a href="https://example.com"><img src="work3.jpg" alt="Сайт для [ниша]"><span>[Проект 3]</span></a>
-    <a href="https://example.com"><img src="work4.jpg" alt="Сайт для [ниша]"><span>[Проект 4]</span></a>
+    <a href="works/coffee/"><img src="img/coffee-mobile.png" alt="Сайт кофейни"><span>Кофейня · онлайн-заказ</span></a>
+    <a href="works/barber/"><img src="img/barber-mobile.png" alt="Сайт барбершопа"><span>Барбершоп · онлайн-запись</span></a>
+    <a href="works/dental/"><img src="img/dental-mobile.png" alt="Сайт стоматологии"><span>Стоматология · заявки</span></a>
   </div>
 
   <h2>Как я работаю</h2>

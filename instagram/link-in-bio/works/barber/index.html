@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Барбершоп «Сталь» — концепт</title>
+<style>
+  :root { --bg:#0f0f10; --panel:#1a1a1c; --ink:#f2efe9; --muted:#9a968e; --gold:#d6a756; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Inter, sans-serif; background:var(--bg); color:var(--ink); }
+  nav { display:flex; justify-content:space-between; align-items:center; padding:24px 6vw; border-bottom:1px solid #26262a; }
+  .logo { font-family:"Inter Display"; font-weight:900; letter-spacing:6px; font-size:20px; }
+  .logo span { color:var(--gold); }
+  .btn { background:var(--gold); color:#111; padding:14px 24px; font-weight:700; text-decoration:none; display:inline-block; border-radius:4px; text-transform:uppercase; letter-spacing:1px; font-size:14px; }
+  .ghost { background:transparent; color:var(--ink); border:1px solid #444; }
+  .hero { padding:90px 6vw 70px; position:relative; overflow:hidden; }
+  .hero::after { content:""; position:absolute; right:-8vw; top:-10%; width:55vw; height:120%; background:repeating-linear-gradient(135deg, #1b1b1e 0 22px, #141416 22px 44px); transform:skewX(-12deg); z-index:0; }
+  .hero > * { position:relative; z-index:1; }
+  .tag { color:var(--gold); text-transform:uppercase; letter-spacing:3px; font-size:13px; font-weight:600; }
+  h1 { font-family:"Inter Display"; font-weight:900; font-size:clamp(44px,7vw,96px); line-height:.95; margin:18px 0 24px; text-transform:uppercase; letter-spacing:-1px; }
+  h1 span { color:var(--gold); }
+  .hero p { color:var(--muted); font-size:19px; max-width:460px; line-height:1.5; margin-bottom:32px; }
+  .actions { display:flex; gap:12px; flex-wrap:wrap; }
+  .stats { display:flex; gap:48px; margin-top:56px; flex-wrap:wrap; }
+  .stats b { font-size:36px; display:block; font-family:"Inter Display"; }
+  .stats span { color:var(--muted); font-size:14px; }
+  section { padding:70px 6vw; }
+  h2 { font-family:"Inter Display"; text-transform:uppercase; font-size:36px; margin:0 0 30px; letter-spacing:1px; }
+  .price { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .row { background:var(--panel); padding:22px 24px; display:flex; justify-content:space-between; align-items:center; border-left:3px solid var(--gold); }
+  .row small { display:block; color:var(--muted); margin-top:4px; }
+  .row b { color:var(--gold); font-size:20px; }
+  .masters { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .m { background:var(--panel); padding:20px; }
+  .ph { aspect-ratio:4/5; background:linear-gradient(160deg,#2c2c30,#121214); margin-bottom:14px; display:flex; align-items:center; justify-content:center; font-size:64px; color:#3a3a40; font-weight:900; }
+  footer { padding:30px 6vw 50px; color:var(--muted); border-top:1px solid #26262a; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  @media (max-width:760px) {
+    .hero::after { display:none; }
+    .price, .masters { grid-template-columns:1fr; }
+    .stats { gap:28px; }
+  }
+</style>
+</head>
+<body>
+<nav><div class="logo">СТАЛЬ<span>.</span></div><a class="btn" href="#">Записаться</a></nav>
+<header class="hero">
+  <div class="tag">Мужские стрижки · с 2019 года</div>
+  <h1>Стрижка, <br>которую <span>заметят</span></h1>
+  <p>Онлайн-запись за 20 секунд: выберите мастера и удобное время. Без звонков и ожидания.</p>
+  <div class="actions"><a class="btn" href="#">Записаться онлайн</a><a class="btn ghost" href="#price">Цены</a></div>
+  <div class="stats"><div><b>4 800+</b><span>довольных клиентов</span></div><div><b>5.0</b><span>рейтинг на картах</span></div><div><b>6</b><span>мастеров</span></div></div>
+</header>
+<section id="price">
+  <h2>Услуги</h2>
+  <div class="price">
+    <div class="row"><div>Мужская стрижка<small>60 минут</small></div><b>1 800 ₽</b></div>
+    <div class="row"><div>Стрижка + борода<small>90 минут</small></div><b>2 700 ₽</b></div>
+    <div class="row"><div>Оформление бороды<small>40 минут</small></div><b>1 200 ₽</b></div>
+    <div class="row"><div>Королевское бритьё<small>45 минут</small></div><b>1 500 ₽</b></div>
+  </div>
+</section>
+<section>
+  <h2>Мастера</h2>
+  <div class="masters">
+    <div class="m"><div class="ph">А</div><b>Артём</b><br><small style="color:var(--muted)">Топ-барбер · 8 лет</small></div>
+    <div class="m"><div class="ph">Д</div><b>Денис</b><br><small style="color:var(--muted)">Барбер · 5 лет</small></div>
+    <div class="m"><div class="ph">М</div><b>Марк</b><br><small style="color:var(--muted)">Барбер · 3 года</small></div>
+  </div>
+</section>
+<footer><span>пр. Примерный, 7 · 10:00–22:00</span><span>Концепт сайта · демо-проект</span></footer>
+</body>
+</html>

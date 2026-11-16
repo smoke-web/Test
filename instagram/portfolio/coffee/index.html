@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кофейня «Зерно» — концепт</title>
+<style>
+  :root { --bg:#f4ede4; --ink:#2b1d14; --brown:#6b3f22; --cream:#fffaf3; --accent:#c8743a; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Inter, sans-serif; background:var(--bg); color:var(--ink); }
+  a { color:inherit; }
+  nav { display:flex; justify-content:space-between; align-items:center; padding:22px 6vw; }
+  .logo { font-weight:800; font-size:22px; letter-spacing:-.5px; }
+  .logo span { color:var(--accent); }
+  nav ul { display:flex; gap:28px; list-style:none; margin:0; padding:0; font-weight:500; }
+  .cta { background:var(--ink); color:var(--cream); padding:12px 22px; border-radius:999px; text-decoration:none; font-weight:600; display:inline-block; }
+  .hero { display:grid; grid-template-columns:1.1fr 1fr; gap:4vw; align-items:center; padding:40px 6vw 80px; }
+  h1 { font-family:"Inter Display", Inter, sans-serif; font-size:clamp(40px,6vw,78px); line-height:1; margin:0 0 20px; letter-spacing:-2px; }
+  h1 em { font-style:normal; color:var(--accent); }
+  .hero p { font-size:19px; line-height:1.5; max-width:480px; color:#5a4636; }
+  .cup { aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 50% 45%, #3a2416 0 30%, #8a5531 31% 34%, var(--cream) 35% 48%, transparent 49%), radial-gradient(circle at 70% 30%, #e7b98a, #c8743a 60%, #6b3f22); box-shadow:0 40px 80px rgba(60,30,10,.25); position:relative; }
+  .badge { position:absolute; bottom:8%; left:-6%; background:var(--cream); padding:14px 18px; border-radius:16px; font-weight:600; box-shadow:0 10px 30px rgba(0,0,0,.12); }
+  section { padding:70px 6vw; }
+  h2 { font-size:40px; letter-spacing:-1px; margin:0 0 30px; }
+  .menu { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .item { background:var(--cream); border-radius:22px; padding:26px; }
+  .item .dot { width:64px; height:64px; border-radius:50%; margin-bottom:18px; }
+  .item h3 { margin:0 0 6px; font-size:20px; }
+  .item p { margin:0; color:#7a6555; }
+  .item b { display:block; margin-top:14px; font-size:20px; }
+  .dark { background:var(--ink); color:var(--cream); border-radius:32px; margin:0 6vw 70px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap; }
+  .dark h2 { margin:0 0 8px; }
+  .dark .cta { background:var(--accent); }
+  footer { padding:30px 6vw 50px; color:#7a6555; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  @media (max-width:760px) {
+    nav ul { display:none; }
+    .hero { grid-template-columns:1fr; padding-top:10px; }
+    .cup { max-width:320px; margin:0 auto; }
+    .menu { grid-template-columns:1fr; }
+    h2 { font-size:30px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">зерно<span>.</span></div>
+  <ul><li>Меню</li><li>О нас</li><li>Доставка</li><li>Контакты</li></ul>
+  <a class="cta" href="#order">Заказать</a>
+</nav>
+<header class="hero">
+  <div>
+    <h1>Кофе, ради которого <em>встают раньше</em></h1>
+    <p>Обжариваем зерно сами каждую неделю. Заберите заказ без очереди: оформите онлайн за 30 секунд.</p>
+    <a class="cta" href="#order">Заказать с собой →</a>
+  </div>
+  <div class="cup"><div class="badge">⭐ 4.9 · 1 200+ отзывов</div></div>
+</header>
+<section>
+  <h2>Хиты недели</h2>
+  <div class="menu">
+    <div class="item"><div class="dot" style="background:radial-gradient(circle,#f3d9b8,#b4774a)"></div><h3>Раф лавандовый</h3><p>Сливки, ваниль, лаванда</p><b>290 ₽</b></div>
+    <div class="item"><div class="dot" style="background:radial-gradient(circle,#4a2c1c,#1d120b)"></div><h3>Фильтр дня</h3><p>Эфиопия, ягодные ноты</p><b>220 ₽</b></div>
+    <div class="item"><div class="dot" style="background:radial-gradient(circle,#ffe2a8,#e09a3e)"></div><h3>Круассан</h3><p>Пекарня по соседству, с утра</p><b>180 ₽</b></div>
+  </div>
+</section>
+<section class="dark" id="order">
+  <div><h2>Первый кофе — в подарок</h2><p>При заказе через сайт до конца месяца.</p></div>
+  <a class="cta" href="#">Получить промокод</a>
+</section>
+<footer><span>ул. Примерная, 12 · ежедневно 8:00–22:00</span><span>Концепт сайта · демо-проект</span></footer>
+</body>
+</html>
