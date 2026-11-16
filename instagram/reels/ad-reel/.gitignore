@@ -1,3 +1,5 @@
 scene.html
 site-*.png
 frames/
+audio/phrase*.wav
+audio/mix*.wav
