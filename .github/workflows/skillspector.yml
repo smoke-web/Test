@@ -1,0 +1,49 @@
+name: Проверка скиллов (SkillSpector)
+
+on:
+  push:
+    paths:
+      - ".claude/**"
+      - ".github/workflows/skillspector.yml"
+  schedule:
+    - cron: "17 3 * * 1"      # раз в неделю, в понедельник
+  workflow_dispatch:          # кнопка «Run workflow» для ручного запуска
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Установить SkillSpector
+        run: uv tool install --python 3.12 git+https://github.com/NVIDIA/skillspector.git
+
+      - name: Проверить скиллы и плагины
+        run: |
+          mkdir -p reports
+          targets=""
+          for d in .claude/skills/*/; do targets="$targets $d"; done
+          # плагины, подключённые в .claude/settings.json
+          targets="$targets https://github.com/DietrichGebert/ponytail https://github.com/lemomo-ai/lemo-opuscar"
+          echo "# Отчёт SkillSpector" >> "$GITHUB_STEP_SUMMARY"
+          for t in $targets; do
+            name=$(echo "$t" | sed 's#https://github.com/##; s#^\.claude/skills/##; s#/$##; s#/#_#g')
+            echo "Проверяю $t"
+            if skillspector scan "$t" --no-llm --format markdown --output "reports/$name.md"; then
+              { echo; echo "## $t"; cat "reports/$name.md"; } >> "$GITHUB_STEP_SUMMARY"
+            else
+              { echo; echo "## $t"; echo "⚠️ Проверка не завершилась, смотрите лог шага."; } >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: skillspector-reports
+          path: reports/
