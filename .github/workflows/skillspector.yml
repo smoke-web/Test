@@ -30,11 +30,15 @@ jobs:
           targets=""
           for d in .claude/skills/*/; do targets="$targets $d"; done
           # плагины, подключённые в .claude/settings.json
-          targets="$targets https://github.com/DietrichGebert/ponytail https://github.com/lemomo-ai/lemo-opuscar"
+          mkdir -p /tmp/plugins
+          git clone -q --depth 1 https://github.com/DietrichGebert/ponytail /tmp/plugins/ponytail
+          git clone -q --depth 1 https://github.com/lemomo-ai/lemo-opuscar /tmp/plugins/lemo-opuscar
+          rm -rf /tmp/plugins/*/.git
+          targets="$targets /tmp/plugins/ponytail/ /tmp/plugins/lemo-opuscar/plugin/"
           echo "# Отчёт SkillSpector" >> "$GITHUB_STEP_SUMMARY"
           for t in $targets; do
-            name=$(echo "$t" | sed 's#https://github.com/##; s#^\.claude/skills/##; s#/$##; s#/#_#g')
-            echo "Проверяю $t"
+            name=$(echo "$t" | sed 's#^/tmp/plugins/##; s#^\.claude/skills/##; s#/$##; s#/#_#g')
+            echo; echo "Проверяю $t"
             if skillspector scan "$t" --no-llm --format markdown --output "reports/$name.md"; then
               { echo; echo "## $t"; cat "reports/$name.md"; } >> "$GITHUB_STEP_SUMMARY"
               cat "reports/$name.md"
