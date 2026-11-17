@@ -37,6 +37,7 @@ jobs:
             echo "Проверяю $t"
             if skillspector scan "$t" --no-llm --format markdown --output "reports/$name.md"; then
               { echo; echo "## $t"; cat "reports/$name.md"; } >> "$GITHUB_STEP_SUMMARY"
+              cat "reports/$name.md"
             else
               { echo; echo "## $t"; echo "⚠️ Проверка не завершилась, смотрите лог шага."; } >> "$GITHUB_STEP_SUMMARY"
             fi
